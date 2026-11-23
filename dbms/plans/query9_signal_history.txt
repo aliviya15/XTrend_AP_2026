@@ -1,0 +1,13 @@
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=37.41..38.66 rows=500 width=134) (actual time=0.011..0.012 rows=0.00 loops=1)
+   Sort Key: recorded_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=3
+   ->  Seq Scan on signal_history  (cost=0.00..15.00 rows=500 width=134) (actual time=0.003..0.003 rows=0.00 loops=1)
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.182 ms
+ Execution Time: 0.021 ms
+(9 rows)
+

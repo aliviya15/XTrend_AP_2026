@@ -1,0 +1,18 @@
+                                                                           QUERY PLAN                                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=9.51..9.52 rows=1 width=32) (actual time=0.038..0.039 rows=1.00 loops=1)
+   Buffers: shared hit=5
+   ->  Bitmap Heap Scan on market_candles  (cost=4.16..9.50 rows=2 width=20) (actual time=0.018..0.019 rows=2.00 loops=1)
+         Recheck Cond: (crypto_id = 1)
+         Heap Blocks: exact=1
+         Buffers: shared hit=5
+         ->  Bitmap Index Scan on market_candles_crypto_id_interval_open_time_key  (cost=0.00..4.16 rows=2 width=0) (actual time=0.013..0.013 rows=2.00 loops=1)
+               Index Cond: (crypto_id = 1)
+               Index Searches: 1
+               Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=118
+ Planning Time: 0.536 ms
+ Execution Time: 0.106 ms
+(14 rows)
+

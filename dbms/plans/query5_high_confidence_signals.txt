@@ -1,0 +1,10 @@
+                                               QUERY PLAN                                                
+---------------------------------------------------------------------------------------------------------
+ Seq Scan on signals  (cost=0.00..14.75 rows=127 width=182) (actual time=0.006..0.007 rows=0.00 loops=1)
+   Filter: (confidence_score >= '80'::numeric)
+ Planning:
+   Buffers: shared hit=67
+ Planning Time: 0.387 ms
+ Execution Time: 0.026 ms
+(6 rows)
+

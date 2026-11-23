@@ -1,0 +1,26 @@
+                                                         QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=59.47..59.69 rows=87 width=74) (actual time=0.009..0.010 rows=0.00 loops=1)
+   Sort Key: (count(s.signal_id)) DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=3
+   InitPlan 1
+     ->  Aggregate  (cost=20.20..20.21 rows=1 width=32) (never executed)
+           ->  HashAggregate  (cost=15.70..17.70 rows=200 width=16) (never executed)
+                 Group Key: signals.crypto_id
+                 ->  Seq Scan on signals  (cost=0.00..13.80 rows=380 width=8) (never executed)
+   ->  HashAggregate  (cost=32.56..36.46 rows=87 width=74) (actual time=0.004..0.004 rows=0.00 loops=1)
+         Group Key: c.symbol
+         Filter: ((count(s.signal_id))::numeric > (InitPlan 1).col1)
+         Batches: 1  Memory Usage: 48kB
+         ->  Hash Join  (cost=15.85..30.66 rows=380 width=74) (actual time=0.002..0.003 rows=0.00 loops=1)
+               Hash Cond: (s.crypto_id = c.crypto_id)
+               ->  Seq Scan on signals s  (cost=0.00..13.80 rows=380 width=16) (actual time=0.002..0.002 rows=0.00 loops=1)
+               ->  Hash  (cost=12.60..12.60 rows=260 width=66) (never executed)
+                     ->  Seq Scan on cryptocurrencies c  (cost=0.00..12.60 rows=260 width=66) (never executed)
+ Planning:
+   Buffers: shared hit=169
+ Planning Time: 0.325 ms
+ Execution Time: 0.058 ms
+(22 rows)
+

@@ -1,0 +1,14 @@
+                                                        QUERY PLAN                                                         
+---------------------------------------------------------------------------------------------------------------------------
+ Hash Join  (cost=12.93..46.00 rows=1020 width=537) (actual time=0.005..0.005 rows=0.00 loops=1)
+   Hash Cond: (ap.user_id = u.user_id)
+   ->  Seq Scan on alert_preferences ap  (cost=0.00..30.40 rows=1020 width=9) (actual time=0.004..0.004 rows=0.00 loops=1)
+         Filter: browser_notifications_enabled
+   ->  Hash  (cost=11.30..11.30 rows=130 width=544) (never executed)
+         ->  Seq Scan on users u  (cost=0.00..11.30 rows=130 width=544) (never executed)
+ Planning:
+   Buffers: shared hit=217
+ Planning Time: 0.952 ms
+ Execution Time: 0.054 ms
+(10 rows)
+

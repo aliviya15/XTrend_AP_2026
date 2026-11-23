@@ -1,0 +1,16 @@
+                                                     QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ WindowAgg  (cost=30.10..37.68 rows=380 width=66) (actual time=0.023..0.023 rows=0.00 loops=1)
+   Window: w1 AS (PARTITION BY crypto_id ORDER BY confidence_score ROWS UNBOUNDED PRECEDING)
+   Buffers: shared hit=6
+   ->  Sort  (cost=30.08..31.03 rows=380 width=58) (actual time=0.021..0.022 rows=0.00 loops=1)
+         Sort Key: crypto_id, confidence_score DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=6
+         ->  Seq Scan on signals  (cost=0.00..13.80 rows=380 width=58) (actual time=0.003..0.004 rows=0.00 loops=1)
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.383 ms
+ Execution Time: 0.097 ms
+(12 rows)
+

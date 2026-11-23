@@ -1,0 +1,11 @@
+                                                QUERY PLAN                                                 
+-----------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=14.76..14.77 rows=1 width=8) (actual time=0.013..0.013 rows=1.00 loops=1)
+   ->  Seq Scan on signals  (cost=0.00..14.75 rows=2 width=0) (actual time=0.007..0.007 rows=0.00 loops=1)
+         Filter: ((signal_type)::text = 'BULLISH'::text)
+ Planning:
+   Buffers: shared hit=76
+ Planning Time: 0.427 ms
+ Execution Time: 0.074 ms
+(7 rows)
+

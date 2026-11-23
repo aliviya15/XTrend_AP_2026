@@ -1,0 +1,12 @@
+                                                                                  QUERY PLAN                                                                                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan Backward using market_candles_crypto_id_interval_open_time_key on market_candles  (cost=0.15..8.17 rows=1 width=168) (actual time=0.011..0.011 rows=2.00 loops=1)
+   Index Cond: ((crypto_id = 2) AND (("interval")::text = '1h'::text))
+   Index Searches: 1
+   Buffers: shared hit=5
+ Planning:
+   Buffers: shared hit=138
+ Planning Time: 0.372 ms
+ Execution Time: 0.044 ms
+(8 rows)
+

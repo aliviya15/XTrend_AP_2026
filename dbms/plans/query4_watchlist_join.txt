@@ -1,0 +1,26 @@
+                                                           QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Hash Join  (cost=32.60..66.66 rows=1570 width=494) (actual time=0.045..0.050 rows=8.00 loops=1)
+   Hash Cond: (wi.crypto_id = c.crypto_id)
+   Buffers: shared hit=3
+   ->  Hash Join  (cost=16.75..46.63 rows=1570 width=226) (actual time=0.020..0.022 rows=8.00 loops=1)
+         Hash Cond: (wi.watchlist_id = w.watchlist_id)
+         Buffers: shared hit=2
+         ->  Seq Scan on watchlist_items wi  (cost=0.00..25.70 rows=1570 width=16) (actual time=0.005..0.005 rows=8.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=13.00..13.00 rows=300 width=226) (actual time=0.007..0.008 rows=4.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=1
+               ->  Seq Scan on watchlists w  (cost=0.00..13.00 rows=300 width=226) (actual time=0.003..0.004 rows=4.00 loops=1)
+                     Buffers: shared hit=1
+   ->  Hash  (cost=12.60..12.60 rows=260 width=284) (actual time=0.019..0.019 rows=4.00 loops=1)
+         Buckets: 1024  Batches: 1  Memory Usage: 9kB
+         Buffers: shared hit=1
+         ->  Seq Scan on cryptocurrencies c  (cost=0.00..12.60 rows=260 width=284) (actual time=0.011..0.012 rows=4.00 loops=1)
+               Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=241
+ Planning Time: 0.911 ms
+ Execution Time: 0.100 ms
+(22 rows)
+
