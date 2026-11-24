@@ -145,3 +145,11 @@ HAVING COUNT(s.signal_id) > (
     ) AS signal_summary
 )
 ORDER BY total_signals DESC;
+
+
+
+
+const mymiddleware = (req, res, next ) =>{
+    consdole.log("middlkewere is "):
+    next();
+}

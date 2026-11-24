@@ -1,0 +1,14 @@
+{
+  "name": "xtrend-platform",
+  "version": "2.0.0",
+  "description": "XTrend – The Intelligence Behind Every Market Move. Institutional cryptocurrency trading intelligence platform powered by PostgreSQL and EMA crossover analytics.",
+  "scripts": {
+    "start": "node backend/server.js",
+    "backend": "node backend/server.js",
+    "build": "cd frontend && npm run build",
+    "frontend": "cd frontend && npm run dev",
+    "test:db": "node -e \"const db = require('./backend/config/db'); db.query('SELECT NOW()').then(r => console.log('DB SUCCESS:', r.rows)).catch(console.error).finally(() => process.exit())\""
+  },
+  "author": "Aliviya",
+  "license": "ISC"
+}
